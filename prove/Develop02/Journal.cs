@@ -14,7 +14,7 @@ public class Journal {
     public void SaveToFile(string fileName) {
         using (StreamWriter outputFile = new StreamWriter(fileName)) {
             foreach (Entry entry in _entries) {
-                outputFile.WriteLine($"{entry._date}~|~{entry._promptText}~|~{entry._entryText}");
+                outputFile.WriteLine($"{entry._date}~|~{entry._date}~|~{entry._promptText}~|~{entry._entryText}");
             }
         }
 
@@ -26,8 +26,9 @@ public class Journal {
             string[] parts = line.Split("~|~");
             Entry loadEntry = new Entry();
             loadEntry._date = parts[0];
-            loadEntry._promptText = parts[1];
-            loadEntry._entryText = parts[2];
+            loadEntry._time = parts[1];
+            loadEntry._promptText = parts[2];
+            loadEntry._entryText = parts[3];
             _entries.Add(loadEntry);
 
         }

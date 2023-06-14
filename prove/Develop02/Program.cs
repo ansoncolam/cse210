@@ -27,6 +27,7 @@ class Program {
                     PromptGenerator prompt = new PromptGenerator();
                     userEntry.SetPrompt(prompt.GetRandomPrompt());
                     Console.WriteLine(userEntry.GetPrompt());
+                    Console.Write("> ");
                     userEntry.SetEntry(Console.ReadLine());
                     userJournal.AddEntry(userEntry);
 
