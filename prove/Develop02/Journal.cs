@@ -1,5 +1,5 @@
 public class Journal {
-    private List<Entry> _entries = new List<Entry>();
+    public List<Entry> _entries = new List<Entry>();
 
     public void AddEntry(Entry newEntry) {
         _entries.Add(newEntry);
@@ -29,7 +29,7 @@ public class Journal {
             loadEntry._promptText = parts[1];
             loadEntry._entryText = parts[2];
             _entries.Add(loadEntry);
-            
+
         }
     
     }
