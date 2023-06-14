@@ -1,9 +1,10 @@
 public class Journal {
-    public List<Entry> _entries = new List<Entry>();
+    private List<Entry> _entries = new List<Entry>();
 
     public void AddEntry(Entry newEntry) {
         _entries.Add(newEntry);
     }
+
     public void DisplayAll() {
         foreach (Entry entry in _entries) {
             entry.Display();
@@ -28,6 +29,7 @@ public class Journal {
             loadEntry._promptText = parts[1];
             loadEntry._entryText = parts[2];
             _entries.Add(loadEntry);
+            
         }
     
     }
