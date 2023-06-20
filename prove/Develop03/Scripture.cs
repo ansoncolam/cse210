@@ -15,29 +15,29 @@ public class Scripture {
 
     public void HideRandomWords(int numberToHide) {
         int wordCount = _words.Count();
-        for (int k = 0; k < numberToHide; k++) {
-            Random randomNumber = new Random();
-            int randNum = randomNumber.Next(1, wordCount);
-            if (_words[randNum].IsHidden() == false) {
-                _words[randNum].Hide();
-            } else {
-                k = k - 1;
+        int shownTotal = 0;
+        for (int i = 0; i < wordCount; i++) {
+            if (_words[i].IsHidden() == false) {
+                shownTotal = shownTotal + 1;
+            }
+        }
+
+        if (shownTotal <= numberToHide) {
+            for (int i = 0; i < wordCount; i++) {
+                _words[i].Hide();
+            }
+        } else {
+            for (int k = 0; k < numberToHide; k++) {
+                Random randomNumber = new Random();
+                int randNum = randomNumber.Next(1, wordCount);
+                if (_words[randNum].IsHidden() == false) {
+                    _words[randNum].Hide();
+                } else {
+                    k = k - 1;
+                }
             }
         }
     }
-
-    //     public void HideRandomWords(int numberToHide) {
-    //     int wordCount = _words.Count();
-    //     for (int k = 0; k < numberToHide; k++) {
-    //         Random randomNumber = new Random();
-    //         int randNum = randomNumber.Next(1, wordCount);
-    //         if (_words[randNum].IsHidden() == false) {
-    //             _words[randNum].Hide();
-    //         } else {
-    //             k = k - 1;
-    //         }
-    //     }
-    // }
 
     public void GetDisplayText() {
         Console.Write($"{_reference.GetDisplayText()} ");

@@ -15,11 +15,14 @@ class Program {
             Console.WriteLine("");
             Console.WriteLine("Press enter to continue or type \'quit\' to finish:");
 
-            myScripture.HideRandomWords(1);
+            if (myScripture.IsCompletelyHidden() == true) {
+                break;
+            }
+
+            myScripture.HideRandomWords(3);
 
             userInput = Console.ReadLine();
 
         }
-
     }
 }
