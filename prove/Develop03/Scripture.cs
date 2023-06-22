@@ -4,6 +4,7 @@ public class Scripture {
     private List<Word> _words;
     
     public Scripture(Reference reference, string text) {
+
         _reference = reference;
         _words = new List<Word>();
         List<string> myList = text.Split(" ").ToList();
@@ -11,11 +12,14 @@ public class Scripture {
             Word myWord = new Word(part);
             _words.Add(myWord);
         }
+
     }
 
     public void HideRandomWords(int numberToHide) {
+
         int wordCount = _words.Count();
         int shownTotal = 0;
+
         for (int i = 0; i < wordCount; i++) {
             if (_words[i].IsHidden() == false) {
                 shownTotal = shownTotal + 1;
@@ -27,40 +31,46 @@ public class Scripture {
                 _words[i].Hide();
             }
         } else {
-            for (int k = 0; k < numberToHide; k++) {
+            for (int i = 0; i < numberToHide; i++) {
                 Random randomNumber = new Random();
-                int randNum = randomNumber.Next(1, wordCount);
+                int randNum = randomNumber.Next(0, wordCount);
                 if (_words[randNum].IsHidden() == false) {
                     _words[randNum].Hide();
                 } else {
-                    k = k - 1;
+                    i = i - 1;
                 }
             }
         }
+        
     }
 
     public void GetDisplayText() {
         Console.Write($"{_reference.GetDisplayText()} ");
         int wordCount = _words.Count();
-        for (int j = 0; j < wordCount; j++) {
-            Console.Write($"{_words[j].GetDisplayText()}");
+        for (int i = 0; i < wordCount; i++) {
+            Console.Write($"{_words[i].GetDisplayText()}");
             Console.Write(" ");
         }
         Console.WriteLine();
     }
 
     public bool IsCompletelyHidden() {
+
         int wordCount = _words.Count();
-        int hiddenTotal = 0;
-        for (int l = 0; l < wordCount; l++) {
-            if (_words[l].IsHidden() == true) {
-                hiddenTotal = hiddenTotal + 1;
+        int shownTotal = 0;
+
+        for (int i = 0; i < wordCount; i++) {
+            if (_words[i].IsHidden() == false) {
+                shownTotal = shownTotal + 1;
             }
         }
-        if (wordCount == hiddenTotal) {
+
+        if (shownTotal == 0) {
             return true;
         } else {
             return false;
         }
+
     }
+    
 }

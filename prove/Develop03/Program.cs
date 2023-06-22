@@ -3,9 +3,19 @@ using System;
 class Program {
     static void Main(string[] args) {
 
-        Reference myReference = new Reference("Proverbs", 3, 5, 6);
-        Scripture myScripture = new Scripture(myReference, "Trust in the Lord with all thine heart and lean not unto thine own understanding; in all thy ways acknowledge him, and he shall direct thy paths.");
-        
+        string[] lines = System.IO.File.ReadAllLines("Scripture.txt");
+        int lineCount = File.ReadLines("Scripture.txt").Count();
+        Random randomGenerator = new Random();
+        int randNum = randomGenerator.Next(0, lineCount);
+        string line = File.ReadLines("Scripture.txt").Skip(randNum).Take(1).First();
+        string[] parts = line.Split("~|~");
+        List<string> _scripture = new List<string>();
+        int newChapter = int.Parse(parts[1]);
+        int newVerse = int.Parse(parts[2]);
+        int newEndVerse = int.Parse(parts[3]);
+        Reference myReference = new Reference(parts[0],newChapter,newVerse,newEndVerse);
+        Scripture myScripture = new Scripture(myReference, parts[4]);
+
         string userInput = "";
 
         while (userInput != "quit") {
@@ -16,6 +26,7 @@ class Program {
             Console.WriteLine("Press enter to continue or type \'quit\' to finish:");
 
             if (myScripture.IsCompletelyHidden() == true) {
+                Console.WriteLine("");
                 break;
             }
 
@@ -24,5 +35,6 @@ class Program {
             userInput = Console.ReadLine();
 
         }
+        
     }
 }
