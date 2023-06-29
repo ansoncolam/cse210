@@ -18,17 +18,17 @@ class Program {
 
         string userInput = "";
 
-        while (userInput != "quit") {
+        while (userInput != "quit" && myScripture.IsCompletelyHidden() != true) {
 
             Console.Clear();
             myScripture.GetDisplayText();
             Console.WriteLine("");
             Console.WriteLine("Press enter to continue or type \'quit\' to finish:");
 
-            if (myScripture.IsCompletelyHidden() == true) {
-                Console.WriteLine("");
-                break;
-            }
+            // if () {
+            //     Console.WriteLine("");
+            //     break;
+            // }
 
             myScripture.HideRandomWords(3);
 
