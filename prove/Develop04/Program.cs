@@ -40,7 +40,8 @@ class Program
                     listingCount = listingCount + 1;
                 } else if (userInput == 4) {
                     Console.WriteLine("");
-                    Console.WriteLine($"Activity Log:");
+                    int totalCount = breathingCount + reflectingCount + listingCount;
+                    Console.WriteLine($"You have done {totalCount} activities this time:");
                     Console.WriteLine($"  - Breathing Activity  x {breathingCount}");
                     Console.WriteLine($"  - Reflecting Activity x {reflectingCount}");
                     Console.WriteLine($"  - Listing Activity    x {listingCount}");
