@@ -2,10 +2,12 @@ public class GoalManager {
 
     private List<Goal> _goals;
     private int _score;
+    private string _level;
 
     public GoalManager() {
         _goals= new List<Goal>();
         _score = 0;
+        _level = "Beginner";
     }
 
     public void Start() {
@@ -49,6 +51,7 @@ public class GoalManager {
     }
 
     public void DisplayPlayerInfo() {
+        Console.WriteLine($"Your level: {_level}");
         Console.WriteLine($"You have {_score} points.");
     }
 
@@ -109,14 +112,23 @@ public class GoalManager {
         ListGoalNames();
         Console.Write("Which goal did you accomplish? ");
         int goalNumber = int.Parse(Console.ReadLine()) - 1;
-        while (_goals[goalNumber].IsComplete() == true) {
-            Console.Write("The selected goal has already been completed, please pick another one. ");
-            goalNumber = int.Parse(Console.ReadLine()) - 1;
-        }
         _goals[goalNumber].RecordEvent();
         Console.WriteLine($"Congratulations! You have earned {_goals[goalNumber].GetPoints()} points!");
         _score = _score + _goals[goalNumber].GetPoints();
-        Console.WriteLine($"You now have {_score} points.");   
+        Console.WriteLine($"You now have {_score} points.");
+        if (_score >= 4000 && _level != "Expert") {
+            _level = "Expert";
+            Console.WriteLine($" *** Level up to {_level}! *** ");
+        } else if (_score >= 3000 && _level != "Advanced") {
+            _level = "Advanced";
+            Console.WriteLine($" *** Level up to {_level}! *** ");
+        } else if (_score >= 2000 && _level != "Intermediate") {
+            _level = "Intermediate";
+            Console.WriteLine($" *** Level up to {_level}! *** ");
+        } else if (_score >= 1000 && _level != "Elementary") {
+            _level = "Elementary";
+            Console.WriteLine($" *** Level up to {_level}! *** ");
+        }
     }
 
     public void SaveGoals() {

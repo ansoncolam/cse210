@@ -6,6 +6,5 @@ class Program
     {
         GoalManager myGoalManager = new GoalManager();
         myGoalManager.Start();
-
     }
 }
