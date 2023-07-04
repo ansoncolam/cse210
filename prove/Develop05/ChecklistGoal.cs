@@ -26,7 +26,7 @@ public class ChecklistGoal : Goal {
     }
 
     public override bool IsComplete() {
-        if (_amountCompleted == _target) {
+        if (_amountCompleted >= _target) {
             return true;
         } else {
             return false;

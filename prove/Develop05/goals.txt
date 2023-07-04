@@ -1,0 +1,4 @@
+1000
+SimpleGoal~|~eat healthly~|~eating less oil, salt, suger~|~100~|~False
+EternalGoal~|~go to the temple~|~go to the temple~|~100
+ChecklistGoal~|~work out~|~exercise~|~200~|~100~|~3~|~3

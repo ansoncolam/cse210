@@ -11,7 +11,7 @@ public class SimpleGoal : Goal {
     }
 
     public override void RecordEvent() {
-        _isComplete = true;
+        SetIsComplete(true);
     }
 
     public override bool IsComplete() {
