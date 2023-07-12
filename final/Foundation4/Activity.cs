@@ -18,7 +18,7 @@ public abstract class Activity {
     public abstract string GetActivityType();
 
     public string GetSummary() {
-        return $"{_date.Day.ToString("00")} {_date.ToString("MMM")} {_date.Year} {GetActivityType()} ({_length} min): Distance {Distance().ToString("0.0")} km, Speed: {Speed().ToString("0.0")} kph, Pace: {Pace().ToString("0.0")} min per km";
+        return $"{_date.Day.ToString("00")} {_date.ToString("MMM")} {_date.Year} {GetActivityType()} ({_length} min): Distance {Distance().ToString("0.00")} km, Speed: {Speed().ToString("0.00")} kph, Pace: {Pace().ToString("0.00")} min per km";
     }
 
 }
